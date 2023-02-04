@@ -1,0 +1,101 @@
+[package]
+name = "v9"
+version = "0.62.2"
+edition = "2021"
+authors = [
+  "AtomicGamer9523 <drunkenmonkey4987@gmail.com>",
+  "the Deno authors"
+]
+exclude = [
+  # To keep the package under the 10mb limit imposed by crates.io we exclude
+  # a lot of files that are not needed for the build.
+  "*.css",
+  "*.gyp",
+  "*.gypi",
+  "*.html",
+  "*.m4",
+  "*.md",
+  "*.settings",
+  "*.txt",
+  "*OWNERS*",
+  ".*",
+  "AUTHORS",
+  "Doxyfile*",
+  "LICENSE*",
+  "Makefile*",
+  "README*",
+  "build/android/",
+  "build/chromeos/",
+  "build/fuchsia/",
+  "buildtools/checkdeps/",
+  "buildtools/clang_format/",
+  "buildtools/third_party/libc++/trunk/benchmarks/",
+  "buildtools/third_party/libc++/trunk/docs/",
+  "buildtools/third_party/libc++/trunk/lib/",
+  "buildtools/third_party/libc++/trunk/test/",
+  "buildtools/third_party/libc++/trunk/utils/",
+  "buildtools/third_party/libc++/trunk/www/",
+  "buildtools/third_party/libc++abi/trunk/test/",
+  "third_party/icu/android/",
+  "third_party/icu/android_small/",
+  "third_party/icu/cast/",
+  "third_party/icu/chromeos/",
+  "third_party/icu/common/icudtl.dat",
+  "third_party/icu/common/icudtb.dat",
+  "third_party/icu/flutter/",
+  "third_party/icu/ios/",
+  "third_party/icu/patches/",
+  "third_party/icu/source/config/",
+  "third_party/icu/source/data/",
+  "third_party/icu/source/extra/",
+  "third_party/icu/source/io/",
+  "third_party/icu/source/python/",
+  "third_party/icu/source/samples/",
+  "third_party/icu/source/tools/",
+  "third_party/icu/tzres/",
+  "tools/clang",
+  "v8/ChangeLog",
+  "v8/benchmarks/",
+  "v8/docs/",
+  "v8/samples/",
+  "v8/test/",
+  "v8/tools/",
+  # These files are required for the build.
+  "!.gn",
+  "!BUILD.gn",
+  "!tools/clang/scripts/update.py",
+  "!v8/test/torque/test-torque.tq",
+  "!v8/tools/gen-postmortem-metadata.py",
+  "!v8/tools/gen-v8-gn.py",
+  "!v8/tools/js2c.py",
+  "!v8/tools/run.py",
+  "!v8/tools/snapshot/asm_to_inline_asm.py",
+  "!v8/tools/testrunner/utils/dump_build_config.py",
+]
+
+[features]
+default = ["use_custom_libcxx"]
+use_custom_libcxx = []
+
+[dependencies]
+rsutil = { path = "./tools", package = "tools" }
+lazy_static = "1.4.0"
+hashbrown = "0.13"
+bitflags = "1.3.2"
+spin = "0.9.4"
+
+[build-dependencies]
+fslock = "0.1.8"
+which = "4.2.5"
+
+[dev-dependencies]
+align-data = "0.1.0"
+fslock = "0.1.8"
+trybuild = "1.0.61"
+which = "4.2.5"
+
+[workspace]
+members = [
+  "example",
+  "tools"
+]
